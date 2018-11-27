@@ -31,6 +31,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<h1>Hello Mysql</h1>
 </body>
 </html>
