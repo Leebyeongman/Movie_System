@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+    pageEncoding="EUC-KR"%>
+<% request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -23,30 +24,30 @@ input {
 	width: 280px;
 	margin : 5px 0px;
 }
+
 </style>
 </head>
 <body>
 	<form action="insertMemberPro.jsp" method="post">
 		<div>
 			<h3>회원가입 양식</h3>
-			<fieldset>
 				<div class="register_form">
-					<input type="text" id="id" name="id" required value="ID*" value=""
-						onBlur="if(this.value=='')this.value='ID*'"
-						onFocus="if(this.value=='ID*')this.value='' " maxlength="10">
+					<input type="text" id="id" name="id" required value="ID" value=""
+						onBlur="if(this.value=='')this.value='ID'"
+						onFocus="if(this.value=='ID')this.value='' " maxlength="10">
 				</div>
 
 				<div class="register_form">
 					<input type="password" id="passwd" name="passwd" required
-						value="비밀번호*" value=""
-						onBlur="if(this.value=='')this.value='비밀번호*'"
-						onFocus="if(this.value=='비밀번호*')this.value='' " maxlength="10">
+						value="비밀번호" value=""
+						onBlur="if(this.value=='')this.value='비밀번호'"
+						onFocus="if(this.value=='비밀번호')this.value='' " maxlength="10">
 				</div>
 
 				<div class="register_form">
-					<input type="text" id="name" name="name" required value="이름*"
-						value="" onBlur="if(this.value=='')this.value='이름*'"
-						onFocus="if(this.value=='이름*')this.value='' " maxlength="10">
+					<input type="text" id="name" name="name" required value="이름"
+						value="" onBlur="if(this.value=='')this.value='이름'"
+						onFocus="if(this.value=='이름')this.value='' " maxlength="10">
 				</div>
 
 				<div class="register_form">
@@ -64,12 +65,9 @@ input {
 				</div>
 
 				<p>
-					<small>*표시는 필수사항입니다</small>
+					<small>모든 항목은 필수사항입니다</small>
 				</p>
-
-			</fieldset>
 		</div>
-		
 		<div>
 			<input type="submit" value="회원가입"> <input type="reset"
 				value="다시입력">

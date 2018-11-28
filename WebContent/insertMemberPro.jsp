@@ -1,9 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<% request.setCharacterEncoding("UTF-8"); %>
 <%@ page import = "java.sql.*" %>
 <%@ page import = "login.LogonDBBean" %>
-
-<% request.setCharacterEncoding("utf-8"); %>
 <% request.setCharacterEncoding("euc-kr"); %>
 
 <jsp:useBean id="member" class="login.LogonDataBean">
@@ -15,8 +14,8 @@
 	logon.insertMember(member);
 %>
 
-<jsp:getProperty property="id" name="member"/>ë‹˜ íšŒì›ê°€ìž…ì„ ì¶•í•˜í•©ë‹ˆë‹¤.
+<jsp:getProperty property="id" name="member"/>´Ô È¸¿ø°¡ÀÔÀ» ÃàÇÏÇÕ´Ï´Ù.
 <!-- 
-<button type="button" onclick="location.href='login.jsp'">ë¡œê·¸ì¸</button>
-<button type="button" onclick="location.href='main.jsp'">ë©”ì¸íŽ˜ì´ì§€ë¡œ ì´ë™</button>
+<button type="button" onclick="location.href='login.jsp'">·Î±×ÀÎ</button>
+<button type="button" onclick="location.href='main.jsp'">¸ÞÀÎÆäÀÌÁö·Î ÀÌµ¿</button>
  -->

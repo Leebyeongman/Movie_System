@@ -14,7 +14,7 @@ public class LogonDBBean {
 	private Connection getConnection() throws Exception{
 		Connection conn = null;
 
-		String jdbcUrl = "jdbc:mysql://localhost:3306/term";
+		String jdbcUrl = "jdbc:mysql://localhost:3306/moviedb";
 		String dbId = "root";
 		String dbPass = "dlqudaks12";
 
@@ -31,7 +31,7 @@ public class LogonDBBean {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(
-					"insert into test2 values (?, ?, ?, ?, ?, 0)");
+					"insert into 고객 values (?, ?, ?, ?, ?, 0)");
 			pstmt.setString(1, member.getId());
 			pstmt.setString(2, member.getPasswd());
 			pstmt.setString(3, member.getName());
@@ -55,12 +55,12 @@ public class LogonDBBean {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(
-					"select passwd from term where id = ?");
+					"select 비밀번호 from 고객 where 고객_아이디 = ?");
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				dbpasswd = rs.getString("passwd");
+				dbpasswd = rs.getString("비밀번호");
 				if(dbpasswd.equals(passwd))
 					x = 1;
 				else
