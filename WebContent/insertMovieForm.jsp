@@ -64,9 +64,9 @@ input {
 
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
-				<li><a href="">Reservation</a></li>
+				<li><a href="movieList.jsp">Movie Chart</a></li>
 				<li><a href="insertMovieForm.jsp">Movie Register</a></li>
-				<li><a href="insertTheaterForm.jsp">Theater Register</a></li>
+				<li><a href="updateMovieForm.jsp">Movie Modify</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<%
