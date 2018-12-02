@@ -46,6 +46,7 @@
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
 				<li><a href="">Reservation</a></li>
+				<li><a href="insertMovieForm.jsp">Movie Register</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 			<%

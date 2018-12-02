@@ -9,47 +9,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>로그인 성공</title>
 </head>
-<style>
-body {
-	width: 80%;
-	margin: auto;
-}
-
-input {
-	border: 1px solid gray;
-	border-radius: 3px;
-	color: black;
-	font-family: inherit;
-	font-size: 14px;
-	height: 50px;
-	outline: none;
-	padding: 0px 10px;
-	width: 280px;
-	margin: 5px 0px;
-}
-
-.button {
-	border: 1px solid gray;
-	border-radius: 3px;
-	width: 140px;
-	height: 50px;
-	margin: 10px 4px;
-	font-family: inherit;
-	font-size: 14px;
-	outline: none;
-	padding: 0px 10px;
-}
-
-.login_success {
-	height: 50px;
-	font-family: inherit;
-	font-size: 17px;
-	outline: none;
-	padding: 0px 10px;
-	width: 260px;
-	margin: 5px 0px;
-}
-</style>
 <body>
 	<%
 		String id = "";
