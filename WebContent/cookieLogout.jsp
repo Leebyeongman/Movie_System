@@ -12,9 +12,10 @@
 				response.addCookie(cookies[i]);
 			}
 		}
-	}%>
+	}
+%>
 
 <script>
 	alert("로그아웃 되었습니다.");
-	location.href="cookieMain.jsp";
+	location.href="main.jsp";
 </script>

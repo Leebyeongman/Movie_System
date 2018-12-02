@@ -13,6 +13,8 @@
 <%
 	String id = request.getParameter("id");
 	String passwd = request.getParameter("passwd");
+	out.print(id);
+	out.print(passwd);
 	
 	LogonDBBean logon = LogonDBBean.getInstance();
 	int check = logon.userCheck(id, passwd);
@@ -21,12 +23,12 @@
 		Cookie cookie = new Cookie("id",id);
 		cookie.setMaxAge(20*60);
 		response.addCookie(cookie);
-		response.sendRedirect("cookieMain.jsp");
-		//if(id.equals("admin1"))
-	//		response.sendRedirect("management.jsp");
-	//	else
-	//		response.sendRedirect("main.jsp");
-	} else if(check==0){%>
+		if(id.equals("admin"))
+			response.sendRedirect("management.jsp");
+		else
+			response.sendRedirect("cookieMain.jsp");
+	} else if(check==0){
+%>
 	<script>
 		alert("비밀번호가 맞지 않습니다.");
 		history.go(-1);

@@ -59,6 +59,7 @@ input {
 				for (int i = 0; i < cookies.length; ++i) {
 					if (cookies[i].getName().equals("id")) {
 						id = cookies[i].getValue();
+						response.sendRedirect("main.jsp");
 					}
 				}
 				if (id.equals("")) {
@@ -70,11 +71,5 @@ input {
 		} catch (Exception e) {
 		}
 	%>
-	<div class="login_success">
-		<b><%=id%></b>님이 로그인 하셨습니다.
-	</div>
-	<form method="post" action="cookieLogout.jsp">
-		<input type="submit" value="로그아웃">
-	</form>
 </body>
 </html>

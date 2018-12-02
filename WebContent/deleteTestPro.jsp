@@ -39,7 +39,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset = EUC-KR">
-<title>레코드 삭제</title>
+<title>회원정보 삭제</title>
 </head>
 <body>
    회원정보를 삭제했습니다.

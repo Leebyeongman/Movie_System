@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>CNU_Movie 로그인</title>
+<title>CNU Movie 로그인</title>
 </head>
 <style>
 body {

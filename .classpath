@@ -13,6 +13,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Users/ssey0/OneDrive/바탕 화면/mysql-connector-java-5.1.47 (1)/mysql-connector-java-5.1.47/mysql-connector-java-5.1.47-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ssey0/OneDrive/바탕 화면/찌르레기/mysql-connector-java-5.1.47-bin.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
