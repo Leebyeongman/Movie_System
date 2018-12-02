@@ -53,16 +53,14 @@
 	} catch (Exception e) {
 		e.printStackTrace();
 	} finally {
-		if (rs != null)
-			try {
-				rs.close();
-			} catch (SQLException sqle) {
-			}
-		if (conn != null)
-			try {
-				conn.close();
-			} catch (SQLException sqle) {
-			}
+		if (rs != null) {
+			try { rs.close(); } 
+			catch (SQLException sqle) {}
+		}
+		if (conn != null) {
+			try { conn.close(); } 
+			catch (SQLException sqle) {}
+		}
 	}
 %>
 
@@ -73,5 +71,4 @@
 	location.href = "main.jsp";
 </script>
 </head>
-
 </html>

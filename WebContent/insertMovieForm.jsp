@@ -66,6 +66,7 @@ input {
 			<ul class="nav navbar-nav">
 				<li><a href="">Reservation</a></li>
 				<li><a href="insertMovieForm.jsp">Movie Register</a></li>
+				<li><a href="insertTheaterForm.jsp">Theater Register</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<%
@@ -107,11 +108,11 @@ input {
 	</nav>
 	<div class="movie_register">
 		<form method="post" action="insertMoviePro.jsp">
-			<h3>영화등록하기</h3>
+			<h3>영화 등록</h3>
 			<div class="register_form">
-				<input type="text" name="title" value="영화제목"
-					onBlur="if(this.value=='')this.value='영화제목'"
-					onFocus="if(this.value=='영화제목')this.value='' ">
+				<input type="text" name="title" value="영화 제목"
+					onBlur="if(this.value=='')this.value='영화 제목'"
+					onFocus="if(this.value=='영화 제목')this.value='' ">
 			</div>
 
 			<div class="register_form">
@@ -121,27 +122,27 @@ input {
 			</div>
 
 			<div class="register_form">
-				<input type="text" name="actor" value="출연"
-					onBlur="if(this.value=='')this.value='출연'"
-					onFocus="if(this.value=='출연')this.value='' ">
+				<input type="text" name="actor" value="출연 배우"
+					onBlur="if(this.value=='')this.value='출연 배우'"
+					onFocus="if(this.value=='출연 배우')this.value='' ">
 			</div>
 
 			<div class="register_form">
-				<input type="text" name="rank" value="등급"
-					onBlur="if(this.value=='')this.value='등급'"
-					onFocus="if(this.value=='등급')this.value='' ">
+				<input type="text" name="rank" value="등급 (ex. 12)"
+					onBlur="if(this.value=='')this.value='등급 (ex. 12)'"
+					onFocus="if(this.value=='등급 (ex. 12)')this.value='' ">
 			</div>
 
 			<div class="register_form">
-				<input type="text" name="running" value="러닝타임(분)"
-					onBlur="if(this.value=='')this.value='러닝타임(분)'"
-					onFocus="if(this.value=='러닝타임(분)')this.value='' ">
+				<input type="text" name="running" value="러닝타임 (분)"
+					onBlur="if(this.value=='')this.value='러닝타임 (분)'"
+					onFocus="if(this.value=='러닝타임 (분)')this.value='' ">
 			</div>
 
 			<div class="register_form">
-				<input type="text" name="poster" value="포스터"
-					onBlur="if(this.value=='')this.value='포스터'"
-					onFocus="if(this.value=='포스터')this.value='' ">
+				<input type="text" name="poster" value="포스터 (이미지 주소)"
+					onBlur="if(this.value=='')this.value='포스터 (이미지 주소)'"
+					onFocus="if(this.value=='포스터 (이미지 주소)')this.value='' ">
 			</div>
 
 			<div class="register_form">
@@ -150,7 +151,7 @@ input {
 			</div>
 
 			<div>
-				<button class="button" type="submit">영화 등록</button>
+				<button class="button" type="submit">등록</button>
 				<button class="button" type="reset">초기화</button>
 			</div>
 		</form>

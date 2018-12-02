@@ -47,6 +47,7 @@
 			<ul class="nav navbar-nav">
 				<li><a href="">Reservation</a></li>
 				<li><a href="insertMovieForm.jsp">Movie Register</a></li>
+				<li><a href="insertTheaterForm.jsp">Theater Register</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 			<%
@@ -99,15 +100,13 @@
 	} catch (Exception e) {
 		e.printStackTrace();
 	} finally {
-		if (rs != null)
-			try {
-				rs.close();
-			} catch (SQLException sqle) {
-			}
-		if (conn != null)
-			try {
-				conn.close();
-			} catch (SQLException sqle) {
-			}
+		if (rs != null) {
+			try { rs.close(); } 
+			catch (SQLException sqle) {}
+		}
+		if (conn != null) {
+			try { conn.close(); } 
+			catch (SQLException sqle) {}
+		}
 	}
 %>
