@@ -2,10 +2,19 @@
 	pageEncoding="utf-8"%>
 <%@ page import="java.sql.*"%>
 <%
-	request.setCharacterEncoding("UTF-8");
+	request.setCharacterEncoding("utf-8");
 %>
 
 <%
+	int number = Integer.parseInt(request.getParameter("id"));
+	String title = "";
+	String director = "";
+	String info = "";
+	String actors = "";
+	String rank = "";
+	String rtime = "";
+	String poster = "";
+	int open;
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	Statement stmt = null;
@@ -18,18 +27,31 @@
 
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);
-
 		stmt = conn.createStatement();
+
 		// rating
-		String sql = "select * from 영화";
+		String sql = "select * from 영화 where 영화_아이디=?";
+
 		pstmt = conn.prepareStatement(sql);
-		rs = stmt.executeQuery(sql);
+		pstmt.setInt(1, number);
+
+		rs = pstmt.executeQuery();
+		rs.next();
+
+		title = rs.getString("제목");
+		director = rs.getString("감독");
+		info = rs.getString("주요정보");
+		actors = rs.getString("출연");
+		rank = rs.getString("등급");
+		rtime = rs.getString("러닝타임");
+		poster = rs.getString("포스터");
+		open = rs.getInt("상영중");
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>영화 수정 리스트</title>
+<title>영화 수정</title>
 <!-- bootstrap -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -42,99 +64,36 @@
 	
 </script>
 <style>
-#root {
-	height: 100%;
+.movie_edit {
+	width: 80%;
+	margin: auto;
 }
 
-.App {
-	padding: 50px;
-	display: flex;
-	justify-content: space-around;
-	flex-wrap: wrap;
+input {
+	border: 1px solid gray;
+	border-radius: 3px;
+	color: black;
+	font-family: inherit;
 	font-size: 14px;
+	height: 50px;
+	outline: none;
+	padding: 0px 10px;
+	width: 280px;
+	margin: 5px 0px;
 }
 
-img {
-	width: 170px;
-	height: 258px;
-	position: relative;
-	top: -20px;
-	box-shadow: -10px 19px 38px rgba(83, 83, 83, 0.3), 10px 15px 12px
-		rgba(80, 80, 80, 0.22);
-}
-
-.movie {
-	background-color: white;
-	width: 40%;
-	display: flex;
-	justify-content: space-between;
-	align-items: flex-start;
-	flex-wrap: wrap;
-	margin-bottom: 50px;
-	text-overflow: ellipsis;
-	padding: 0 20px;
-	box-shadow: 0 8px 38px rgba(133, 133, 133, 0.3), 0 5px 12px
-		rgba(133, 133, 133, 0.22);
-}
-
-h3 {
-	height: 30px;
-	padding: 0px 120px;
-}
-
-.movie__Column {
-	width: 30%;
-	box-sizing: border-box;
-	text-overflow: ellipsis;
-}
-
-.movie__Column:last-child {
-	padding: 20px 0;
-	width: 60%;
-}
-
-.movie__Genres {
-	display: flex;
-	flex-wrap: wrap;
-	margin-bottom: 20px;
-	margin-right: 10px;
-}
-
-.movie h1 {
-	font-size: 20px;
-	font-weight: 600;
-}
-
-.movie .movie__Synopsis {
-	overflow: hidden;
-	display: -webkit-box;
-	-webkit-line-clamp: 3;
-	-webkit-box-orient: vertical;
-}
-
-@media screen and (min-width:320px) and (max-width:667px) {
-	.movie {
-		width: 100%;
-	}
-}
-
-@media screen and (min-width:320px) and (max-width:667px) and
-	(orientation: portrait) {
-	.movie {
-		width: 100%;
-		flex-direction: column;
-	}
-	.movie__Poster {
-		top: 0;
-		left: 0;
-		width: 100%;
-	}
-	.movie__Column {
-		width: 100% !important;
-	}
+.button {
+	border: 1px solid gray;
+	border-radius: 3px;
+	width: 140px;
+	height: 50px;
+	margin: 10px 4px;
+	font-family: inherit;
+	font-size: 14px;
+	outline: none;
+	padding: 0px 10px;
 }
 </style>
-<link />
 </head>
 <body>
 	<nav class="navbar navbar-default" id="nav_bar">
@@ -188,40 +147,45 @@ h3 {
 
 		</div>
 	</nav>
-	<h3>Movie Modify List</h3>
-	<div id="root">
-		<div class="App">
-			<%
-				while (rs.next()) {
-						String number = rs.getString("영화_아이디");
-						String title = rs.getString("제목");
-						String running = rs.getString("러닝타임");
-						String poster = rs.getString("포스터");
-						String rank = rs.getString("등급");
-						String info = rs.getString("주요정보");
-			%>
-			<div class="movie"
-				onclick="location.href='updateMovieForm.jsp?id=<%=number%>'">
-				<div class="movie__Column">
-					<img src=<%=poster%>>
-				</div>
-				<div class="movie__Column">
-					<h1><%=title%></h1>
-					<div class="movie__Genres">
-						등급 :
-						<%=rank%><br />
-						러닝 타임 :
-						<%=running%> 분 <br /> 
-					</div>
-					<p class="movie__Synopsis">
-						<%=info%>
-					</p>
-				</div>
+	<div class="movie_edit">
+		<form method="post" action="updateMoviePro.jsp?id=<%=number%>">
+			<h3>영화 수정 양식</h3>
+			<div class="register_form">
+				<input type="text" name="title" value="<%=title%>">
 			</div>
-			<%
-				}
-			%>
-		</div>
+			<div class="register_form">
+				<input type="text" name="director" value="<%=director%>">
+			</div>
+
+			<div class="register_form">
+				<input type="text" name="actor" value="<%=actors%>">
+			</div>
+
+			<div class="register_form">
+				<input type="text" name="rank" value="<%=rank%>">
+			</div>
+
+			<div class="register_form">
+				<input type="text" name="running" value="<%=rtime%>">
+			</div>
+
+			<div class="register_form">
+				<input type="text" name="poster" value="<%=poster%>">
+			</div>
+			
+			<div class="register_form">
+				<input type="text" name="open" value="<%=open%>">
+			</div>
+
+			<div class="register_form">
+				<textarea name="info" cols=37 rows=8><%=info%></textarea>
+			</div>
+			
+			<div>
+				<button class="button" type="submit">Edit</button>
+				<button class="button" onclick="location.href='movieList.jsp'">Back</button>
+			</div>
+		</form>
 	</div>
 </body>
 </html>

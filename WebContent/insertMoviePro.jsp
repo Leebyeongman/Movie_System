@@ -9,7 +9,6 @@
 	String rank = request.getParameter("rank");
 	String rtime = request.getParameter("running");
 	String poster = request.getParameter("poster");
-	int on = Integer.parseInt(request.getParameter("상영중"));
 	String info = request.getParameter("info");
 
 %>
@@ -35,6 +34,7 @@
 		String sql = "select count(*) from 영화";
 		rs = stmt.executeQuery(sql);
 		rs.next();
+		
 		int id = rs.getInt(1) + 1;
 
 		pstmt = conn.prepareStatement("insert into 영화 values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");

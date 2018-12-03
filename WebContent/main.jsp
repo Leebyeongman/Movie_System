@@ -145,7 +145,6 @@ h3 {
 
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
-				<li><a href="">Reservation</a></li>
 				<li><a href="movieManagement.jsp">Movie</a></li>
 				<li><a href="insertTheaterForm.jsp">Theater Register</a></li>
 			</ul>
@@ -190,7 +189,7 @@ h3 {
 	<h3>Movie Chart</h3>
 
 	<div id="root">
-		<div class="App">
+		<div class="App" >
 			<%
 				while (rs.next()) {
 						String number = rs.getString("영화_아이디");
@@ -200,7 +199,7 @@ h3 {
 						String rank = rs.getString("등급");
 						String info = rs.getString("주요정보");
 			%>
-			<div class="movie">
+			<div class="movie" onclick="location.href='reserveMovieForm.jsp?id=<%=number %>'">
 				<div class="movie__Column">
 					<img src=<%=poster%>>
 				</div>
