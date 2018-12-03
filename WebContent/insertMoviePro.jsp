@@ -9,7 +9,7 @@
 	String rank = request.getParameter("rank");
 	String rtime = request.getParameter("running");
 	String poster = request.getParameter("poster");
-	//int on = Integer.parseInt(request.getParameter("상영중"));
+	int on = Integer.parseInt(request.getParameter("상영중"));
 	String info = request.getParameter("info");
 
 %>
@@ -68,7 +68,7 @@
 <meta charset="UTF-8">
 <script>
 	alert("영화가 등록 되었습니다.");
-	location.href = "main.jsp";
+	location.href = "movieList.jsp";
 </script>
 </head>
 </html>

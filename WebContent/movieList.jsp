@@ -42,9 +42,21 @@
 	
 </script>
 <style>
+#root {
+	height: 100%;
+}
+
+.App {
+	padding: 50px;
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	font-size: 14px;
+}
+
 img {
-	width: 250px;
-	height: 300px;
+	width: 170px;
+	height: 258px;
 	position: relative;
 	top: -20px;
 	box-shadow: -10px 19px 38px rgba(83, 83, 83, 0.3), 10px 15px 12px
@@ -66,41 +78,60 @@ img {
 }
 
 h3 {
-	height: 100px;
+	height: 30px;
+	padding: 0px 120px;
 }
 
-.movie__Column{
-    width:30%;
-    box-sizing:border-box;
-    text-overflow: ellipsis;
+.movie__Column {
+	width: 30%;
+	box-sizing: border-box;
+	text-overflow: ellipsis;
 }
 
-.movie__Column:last-child{
-    padding:20px 0;
-    width:60%;
+.movie__Column:last-child {
+	padding: 20px 0;
+	width: 60%;
 }
 
-.movie h1{
-    font-size:20px;
-    font-weight: 600;
+.movie__Genres {
+	display: flex;
+	flex-wrap: wrap;
+	margin-bottom: 20px;
+	margin-right: 10px;
 }
 
-.movie .movie__Genres{
-    display: flex;
-    flex-wrap:wrap;
-    margin-bottom:20px;
-}
-
-.movie__Genres .movie__Genre{
-    margin-right:10px;
-    color:#B4B5BD;
+.movie h1 {
+	font-size: 20px;
+	font-weight: 600;
 }
 
 .movie .movie__Synopsis {
-    text-overflow: ellipsis;
-    color:#B4B5BD;
-    overflow: hidden;
-   	max-height: 32px;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+}
+
+@media screen and (min-width:320px) and (max-width:667px) {
+	.movie {
+		width: 100%;
+	}
+}
+
+@media screen and (min-width:320px) and (max-width:667px) and
+	(orientation: portrait) {
+	.movie {
+		width: 100%;
+		flex-direction: column;
+	}
+	.movie__Poster {
+		top: 0;
+		left: 0;
+		width: 100%;
+	}
+	.movie__Column {
+		width: 100% !important;
+	}
 }
 </style>
 <link />
@@ -159,33 +190,40 @@ h3 {
 		</div>
 	</nav>
 	<h3>Movie Chart</h3>
-	<%
-		while (rs.next()) {
-				String number = rs.getString("영화_아이디");
-				String title = rs.getString("제목");
-				String running = rs.getString("러닝타임");
-				String poster = rs.getString("포스터");
-				String rank = rs.getString("등급");
-				String info = rs.getString("주요정보");
-	%>
-	<div class="movie">
-		<div class="movie__Column">
-			<img src=<%=poster%>>
-		</div>
-		<div class="movie__Column">
-			<h1><%=title%></h1>
-			<div class="movie__Genres">
-				러닝 타임 : <%=running%> 분 <br/>
-				등급 : <%=rank%><br/>
+
+	<div id="root">
+		<div class="App">
+			<%
+				while (rs.next()) {
+						String number = rs.getString("영화_아이디");
+						String title = rs.getString("제목");
+						String running = rs.getString("러닝타임");
+						String poster = rs.getString("포스터");
+						String rank = rs.getString("등급");
+						String info = rs.getString("주요정보");
+			%>
+			<div class="movie">
+				<div class="movie__Column">
+					<img src=<%=poster%>>
+				</div>
+				<div class="movie__Column">
+					<h1><%=title%></h1>
+					<div class="movie__Genres">
+						러닝 타임 :
+						<%=running%>
+						분 <br /> 등급 :
+						<%=rank%><br />
+					</div>
+					<p class="movie__Synopsis">
+						<%=info%>
+					</p>
+				</div>
 			</div>
-			<p className="Movie__Synopsis">
-				<%=info%>
-			</p>
+			<%
+				}
+			%>
 		</div>
 	</div>
-	<%
-		}
-	%>
 </body>
 </html>
 
