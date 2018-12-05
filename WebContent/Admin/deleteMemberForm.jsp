@@ -1,14 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
-<%@ page import="java.sql.*"%>
-<% request.setCharacterEncoding("utf-8"); %>
-
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>CNU Movie Î°úÍ∑∏Ïù∏</title>
-</head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>»∏ø¯¡§∫∏ ªË¡¶</title>
 <style>
 body {
 	width: 80%;
@@ -41,10 +37,11 @@ input {
 }
 
 </style>
+</head>
 <body>
-	<form method="post" action="cookieLoginPro.jsp">
+	<form method="post" action="deleteMemberPro.jsp">
 		<div>
-			<h3>Î°úÍ∑∏Ïù∏</h3>
+			<h3>»∏ø¯¡§∫∏ ªË¡¶</h3>
 			<div class="register_form">
 				<input type="text" id="id" name="id" required value="ID" value=""
 					onBlur="if(this.value=='')this.value='ID'"
@@ -53,17 +50,14 @@ input {
 
 			<div class="register_form">
 				<input type="password" id="passwd" name="passwd" required
-					value="ÎπÑÎ∞ÄÎ≤àÌò∏" value="" onBlur="if(this.value=='')this.value='ÎπÑÎ∞ÄÎ≤àÌò∏'"
-					onFocus="if(this.value=='ÎπÑÎ∞ÄÎ≤àÌò∏')this.value='' " maxlength="10">
+					value="∫Òπ–π¯»£" value="" onBlur="if(this.value=='')this.value='∫Òπ–π¯»£'"
+					onFocus="if(this.value=='∫Òπ–π¯»£')this.value='' " maxlength="10">
 			</div>
 		</div>
-
 		<div>
-			<input class="button" type="submit" value="Î°úÍ∑∏Ïù∏"> 
-			<input class="button" type="button" value="ÌöåÏõêÍ∞ÄÏûÖ" onclick="location.href='insertMemberForm.jsp'">
+			<button class="button" type="submit">ªË¡¶</button>
+			<button class="button" type="submit">√ ±‚»≠</button>
 		</div>
 	</form>
-
-
 </body>
 </html>

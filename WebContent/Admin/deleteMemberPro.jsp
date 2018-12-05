@@ -53,7 +53,6 @@
     		out.println("아이디가 틀렸습니다.");
     	}
    }catch(Exception e) {
-	   out.print("응 안돼");
 	   e.printStackTrace();
    }finally{
 	   if(rs != null) try{rs.close();}catch(SQLException sqle){}

@@ -18,7 +18,7 @@
 				for (int i = 0; i < cookies.length; ++i) {
 					if (cookies[i].getName().equals("id")) {
 						id = cookies[i].getValue();
-						response.sendRedirect("main.jsp");
+						response.sendRedirect("../main.jsp");
 					}
 				}
 				if (id.equals("")) {

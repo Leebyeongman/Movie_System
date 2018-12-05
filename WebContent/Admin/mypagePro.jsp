@@ -20,7 +20,6 @@
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
-	out.print("응 왔어");
 	
 	try{
 		String jdbcUrl = "jdbc:mysql://localhost:3306/moviedb";
@@ -38,7 +37,7 @@
 		pstmt.setString(4, ph);
 		pstmt.setString(5, id);
 		pstmt.executeUpdate();
-		out.print("응 업데이트 했어");
+		
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

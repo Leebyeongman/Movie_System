@@ -138,48 +138,48 @@ h3 {
 	<nav class="navbar navbar-default" id="nav_bar">
 	<div class="container">
 		<div class="navbar-header">
-			<a href="main.jsp">
+			<a href="./main.jsp">
 				<div class="navbar-brand">CNU Movie</div>
 			</a>
 		</div>
 
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
-				<li><a href="movieManagement.jsp">Movie</a></li>
-				<li><a href="insertTheaterForm.jsp">Theater Register</a></li>
+				<li><a href="./Movie/insertMovieForm.jsp">Movie</a></li>
+				<li><a href="./Theater/theaterManagement.jsp">Theater</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<%
 					String id = "";
-						try {
-							Cookie[] cookies = request.getCookies();
-							if (cookies != null) {
-								for (int i = 0; i < cookies.length; ++i) {
-									if (cookies[i].getName().equals("id")) {
-										id = cookies[i].getValue();
+					try {
+						Cookie[] cookies = request.getCookies();
+						if (cookies != null) {
+							for (int i = 0; i < cookies.length; ++i) {
+								if (cookies[i].getName().equals("id")) {
+									id = cookies[i].getValue();
 				%>
-				<li><a href="mypageForm.jsp?id=<%=id%>">My Account</a></li>
-				<li><a href="cookieLogout.jsp">Logout</a></li>
+				<li><a href="./mypageForm.jsp?id=<%=id%>">My Account</a></li>
+				<li><a href="./cookieLogout.jsp">Logout</a></li>
 				<%
 					}
-								}
-								/* 아이디가 없으면 */
-								if (id == "") {
+							}
+							/* 아이디가 없으면 */
+							if (id == "") {
 				%>
-				<li><a href="insertMemberForm.jsp">Sign Up</a></li>
-				<li><a href="login.jsp">Login</a></li>
+				<li><a href="./Admin/insertMemberForm.jsp">Sign Up</a></li>
+				<li><a href="./Admin/login.jsp">Login</a></li>
 				<%
 					}
-								/* 쿠키 값이 없으면 */
-							} else {
+							/* 쿠키 값이 없으면 */
+						} else {
 				%>
-				<li><a href="insertMemberForm.jsp">Sign Up</a></li>
-				<li><a href="login.jsp">Login</a></li>
+				<li><a href="./Admin/insertMemberForm.jsp">Sign Up</a></li>
+				<li><a href="./Admin/login.jsp">Login</a></li>
 				<%
 					}
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 				%>
 			</ul>
 		</div>
@@ -189,7 +189,7 @@ h3 {
 	<h3>Movie Chart</h3>
 
 	<div id="root">
-		<div class="App" >
+		<div class="App">
 			<%
 				while (rs.next()) {
 						String number = rs.getString("영화_아이디");
@@ -199,7 +199,8 @@ h3 {
 						String rank = rs.getString("등급");
 						String info = rs.getString("주요정보");
 			%>
-			<div class="movie" onclick="location.href='reserveMovieForm.jsp?id=<%=number %>'">
+			<div class="movie"
+				onclick="location.href='reserveMovieForm.jsp?id=<%=number %>'">
 				<div class="movie__Column">
 					<img src=<%=poster%>>
 				</div>

@@ -57,7 +57,7 @@ input {
 	<nav class="navbar navbar-default" id="nav_bar">
 	<div class="container">
 		<div class="navbar-header">
-			<a href="main.jsp">
+			<a href="../main.jsp">
 				<div class="navbar-brand">CNU Movie</div>
 			</a>
 		</div>
@@ -77,23 +77,23 @@ input {
 								if (cookies[i].getName().equals("id")) {
 									id = cookies[i].getValue();
 				%>
-				<li><a href="mypageForm.jsp?id=<%=id%>">My Account</a></li>
-				<li><a href="cookieLogout.jsp">Logout</a></li>
+				<li><a href="../Admin/mypageForm.jsp?id=<%=id%>">My Account</a></li>
+				<li><a href="../Admin/cookieLogout.jsp">Logout</a></li>
 				<%
 					}
 							}
 							/* 아이디가 없으면 */
 							if (id == "") {
 				%>
-				<li><a href="insertMemberForm.jsp">Sign Up</a></li>
-				<li><a href="login.jsp">Login</a></li>
+				<li><a href="../Admin/insertMemberForm.jsp">Sign Up</a></li>
+				<li><a href="../Admin/login.jsp">Login</a></li>
 				<%
 					}
 							/* 쿠키 값이 없으면 */
 						} else {
 				%>
-				<li><a href="insertMemberForm.jsp">Sign Up</a></li>
-				<li><a href="login.jsp">Login</a></li>
+				<li><a href="../Admin/insertMemberForm.jsp">Sign Up</a></li>
+				<li><a href="../Admin/login.jsp">Login</a></li>
 				<%
 					}
 					} catch (Exception e) {
@@ -154,7 +154,7 @@ input {
 				<button class="button" type="reset">초기화</button>
 			</div>
 		</form>
-		<button class="button" type="button" onclick="location.href='main.jsp'">취소</button>
+		<button class="button" type="button" onclick="location.href='../main.jsp'">취소</button>
 	</div>
 </body>
 </html>

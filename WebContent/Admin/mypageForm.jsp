@@ -97,10 +97,10 @@ button {
 				<button type="button" onclick="check()">탈퇴</button>
 			</form>
 
-			<button type="button" onclick="location.href='main.jsp'">메인 페이지</button>
+			<button type="button" onclick="location.href='../main.jsp'">메인 페이지</button>
 
 			<div id="modal" style="display: none;">
-				<form method="post" action="deleteTestPro.jsp?table=customer">
+				<form method="post" action="deleteMemberPro.jsp?table=customer">
 					<input type="hidden" required name="id" value="<%=id%>">
 					<ul>
 						<li class="first2">비밀번호</li>

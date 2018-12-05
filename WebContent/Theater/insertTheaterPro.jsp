@@ -52,7 +52,7 @@
 <meta charset="UTF-8">
 <script>
 	alert("영화가 등록 되었습니다.");
-	location.href = "main.jsp";
+	location.href = "../main.jsp";
 </script>
 </head>
 </html>
