@@ -186,18 +186,8 @@ input {
 				<button class="button" onclick="location.href='movieList.jsp'">Back</button>
 			</div>
 		</form>
+				<button class="button" onclick="location.href='deleteMoviePro.jsp?id=<%=number%>'">Delete</button>
 	</div>
-	<script>
-		function check() {
-			var modal1 = document.getElementById('modal');
-			modal1.style.display = "block";
-		}
-		function cancel() {
-
-			var modal1 = document.getElementById('modal');
-			modal1.style.display = "none";
-		}
-	</script>
 </body>
 </html>
 
