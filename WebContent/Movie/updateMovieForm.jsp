@@ -119,7 +119,8 @@ input {
 										if (cookies[i].getName().equals("id")) {
 											id = cookies[i].getValue();
 					%>
-					<li><a href="../Admin/mypageForm.jsp?id=<%=id%>">My Account</a></li>
+					<li><a href="../Admin/mypageForm.jsp?id=<%=id%>">My
+							Account</a></li>
 					<li><a href="../Admin/cookieLogout.jsp">Logout</a></li>
 					<%
 						}
@@ -186,7 +187,8 @@ input {
 				<button class="button" onclick="location.href='movieList.jsp'">Back</button>
 			</div>
 		</form>
-				<button class="button" onclick="location.href='deleteMoviePro.jsp?id=<%=number%>'">Delete</button>
+		<button class="button"
+			onclick="location.href='deleteMoviePro.jsp?id=<%=number%>'">Delete</button>
 	</div>
 </body>
 </html>

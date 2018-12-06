@@ -5,7 +5,7 @@
 	request.setCharacterEncoding("utf-8");
 %>
 <%
-	int id = Integer.parseInt(request.getParameter("id"));
+	String theater_name = request.getParameter("theater_name");
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
@@ -17,16 +17,16 @@
 
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);
-		
-		String sql = "delete from 영화 where 영화_아이디 = ?";
+
+		String sql = "delete from 영화관 where 영화관_이름 = ?";
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setInt(1, id);
+		pstmt.setString(1, theater_name);
 		pstmt.executeUpdate();
 %>
 
 <script>
-	location.href = "movieList.jsp";
-	alert("영화 삭제가 완료되었습니다.");
+	location.href = "theaterList.jsp";
+	alert("영화관 삭제가 완료되었습니다.");
 </script>
 <%
 	} catch (Exception e) {

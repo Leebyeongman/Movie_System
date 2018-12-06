@@ -30,6 +30,7 @@
 		pstmt.setString(4, theater_name);
 		pstmt.executeUpdate();
 		str = "영화관이 수정 되었습니다.";
+		
 	} catch (Exception e) {
 		e.printStackTrace();
 		str = "등록 실패";

@@ -10,8 +10,8 @@
 	String address = "";
 	String phone = "";
 	int total_num = 0;
+
 	Connection conn = null;
-	
 	PreparedStatement pstmt = null;
 	Statement stmt = null;
 	ResultSet rs = null;
@@ -38,7 +38,6 @@
 		address = rs.getString("주소");
 		phone = rs.getString("전화번호");
 		total_num = rs.getInt("총상영관");
-		
 %>
 <!DOCTYPE html>
 <html>
@@ -113,7 +112,8 @@ input {
 										if (cookies[i].getName().equals("id")) {
 											id = cookies[i].getValue();
 					%>
-					<li><a href="../Admin/mypageForm.jsp?id=<%=id%>">My Account</a></li>
+					<li><a href="../Admin/mypageForm.jsp?id=<%=id%>">My
+							Account</a></li>
 					<li><a href="../Admin/cookieLogout.jsp">Logout</a></li>
 					<%
 						}
@@ -164,6 +164,7 @@ input {
 				<button class="button" onclick="location.href='theaterList.jsp'">Back</button>
 			</div>
 		</form>
+			<button class="button" onclick="location.href='deleteTheaterPro.jsp?id=<%=theater_name%>'">Delete</button>
 	</div>
 </body>
 </html>
