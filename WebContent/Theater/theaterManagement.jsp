@@ -28,6 +28,7 @@
 
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
+				<li><a href="theaterList.jsp">Theater List</a></li>	
 				<li><a href="insertTheaterForm.jsp">Theater Register</a></li>
 				<li><a href="updateTheaterForm.jsp">Theater Modify</a></li>
 			</ul>

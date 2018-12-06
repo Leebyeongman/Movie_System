@@ -6,16 +6,12 @@
 %>
 
 <%
-	int number = Integer.parseInt(request.getParameter("id"));
-	String title = "";
-	String director = "";
-	String info = "";
-	String actors = "";
-	String rank = "";
-	String rtime = "";
-	String poster = "";
-	int open;
+	String theater_name = request.getParameter("theater_name");
+	String address = "";
+	String phone = "";
+	int total_num = 0;
 	Connection conn = null;
+	
 	PreparedStatement pstmt = null;
 	Statement stmt = null;
 	ResultSet rs = null;
@@ -30,28 +26,25 @@
 		stmt = conn.createStatement();
 
 		// rating
-		String sql = "select * from 영화 where 영화_아이디=?";
+		String sql = "select * from 영화관 where 영화관_이름=?";
 
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setInt(1, number);
+		pstmt.setString(1, theater_name);
 
 		rs = pstmt.executeQuery();
 		rs.next();
 
-		title = rs.getString("제목");
-		director = rs.getString("감독");
-		info = rs.getString("주요정보");
-		actors = rs.getString("출연");
-		rank = rs.getString("등급");
-		rtime = rs.getString("러닝타임");
-		poster = rs.getString("포스터");
-		open = rs.getInt("상영중");
+		theater_name = rs.getString("영화관_이름");
+		address = rs.getString("주소");
+		phone = rs.getString("전화번호");
+		total_num = rs.getInt("총상영관");
+		
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>영화 수정</title>
+<title>영화관 수정</title>
 <!-- bootstrap -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -64,7 +57,7 @@
 	
 </script>
 <style>
-.movie_edit {
+.theater_edit {
 	width: 80%;
 	margin: auto;
 }
@@ -106,6 +99,7 @@ input {
 
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
+					<li><a href="theaterList.jsp">Theater List</a></li>
 					<li><a href="./insertTheaterForm.jsp">Theater Register</a></li>
 					<li><a href="./updateTheaterForm.jsp">Theater Modify</a></li>
 				</ul>
@@ -147,57 +141,30 @@ input {
 
 		</div>
 	</nav>
-	<div class="movie_edit">
-		<form method="post" action="updateTheater.Pro.jsp?id=<%=number%>">
-			<h3>영화 수정 양식</h3>
+	<div class="theater_edit">
+		<form method="post" action="updateTheaterPro.jsp?id=<%=theater_name%>">
+			<h3>영화관 수정 양식</h3>
 			<div class="register_form">
-				<input type="text" name="title" value="<%=title%>">
+				<input type="text" name="theater_name" value="<%=theater_name%>">
 			</div>
 			<div class="register_form">
-				<input type="text" name="director" value="<%=director%>">
-			</div>
-
-			<div class="register_form">
-				<input type="text" name="actor" value="<%=actors%>">
+				<input type="text" name="address" value="<%=address%>">
 			</div>
 
 			<div class="register_form">
-				<input type="text" name="rank" value="<%=rank%>">
+				<input type="text" name="phone" value="<%=phone%>">
 			</div>
 
 			<div class="register_form">
-				<input type="text" name="running" value="<%=rtime%>">
-			</div>
-
-			<div class="register_form">
-				<input type="text" name="poster" value="<%=poster%>">
-			</div>
-
-			<div class="register_form">
-				<input type="text" name="open" value="<%=open%>">
-			</div>
-
-			<div class="register_form">
-				<textarea name="info" cols=37 rows=8><%=info%></textarea>
+				<input type="text" name="total_num" value="<%=total_num%>">
 			</div>
 
 			<div>
 				<button class="button" type="submit">Edit</button>
-				<button class="button" onclick="location.href='movieList.jsp'">Back</button>
+				<button class="button" onclick="location.href='theaterList.jsp'">Back</button>
 			</div>
 		</form>
 	</div>
-	<script>
-		function check() {
-			var modal1 = document.getElementById('modal');
-			modal1.style.display = "block";
-		}
-		function cancel() {
-
-			var modal1 = document.getElementById('modal');
-			modal1.style.display = "none";
-		}
-	</script>
 </body>
 </html>
 
