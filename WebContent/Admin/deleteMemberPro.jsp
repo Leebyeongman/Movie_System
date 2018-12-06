@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<%@ page import="java.sql.*" %>
-
-<% request.setCharacterEncoding("euc-kr"); %>
-
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<%@ page import="java.sql.*"%>
+<%
+	request.setCharacterEncoding("utf-8");
+%>
 <%
    String id = request.getParameter("id");
    String passwd = request.getParameter("passwd");
@@ -20,37 +20,31 @@
       
       Class.forName("com.mysql.jdbc.Driver");
       conn = DriverManager.getConnection(jdbcUrl,dbId,dbPass);
-      String sql = "select °í°´_¾ÆÀÌµð, ºñ¹Ð¹øÈ£ from °í°´ where °í°´_¾ÆÀÌµð=?";
+      String sql = "select ê³ ê°_ì•„ì´ë””, ë¹„ë°€ë²ˆí˜¸ from ê³ ê° where ê³ ê°_ì•„ì´ë””=?";
       pstmt = conn.prepareStatement(sql);
       pstmt.setString(1,id);
       rs = pstmt.executeQuery();
       
       if(rs.next()) {
-    	  String rId = rs.getString("°í°´_¾ÆÀÌµð");
-    	  String rPasswd = rs.getString("ºñ¹Ð¹øÈ£");
+    	  String rId = rs.getString("ê³ ê°_ì•„ì´ë””");
+    	  String rPasswd = rs.getString("ë¹„ë°€ë²ˆí˜¸");
       	if(id.equals(rId) && passwd.equals(rPasswd)) {
-      		sql = "delete from °í°´ where °í°´_¾ÆÀÌµð = ?";
+      		sql = "delete from ê³ ê° where ê³ ê°_ì•„ì´ë”” = ?";
       		pstmt = conn.prepareStatement(sql);
       		pstmt.setString(1, id);
       		pstmt.executeUpdate();
 %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset = EUC-KR">
-<title>È¸¿øÁ¤º¸ »èÁ¦</title>
-</head>
-<body>
-   È¸¿øÁ¤º¸¸¦ »èÁ¦Çß½À´Ï´Ù.
-</body>
-</html>
+<script>
+	alert("íšŒì› íƒˆí‡´ê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
+	location.href="../main.jsp";
+</script>
 <%
       	}else{
-      		out.println("ÆÐ½º¿öµå°¡ Æ²·È½À´Ï´Ù.");
+      		out.println("íŒ¨ìŠ¤ì›Œë“œê°€ í‹€ë ¸ìŠµë‹ˆë‹¤.");
       	}
       }else{
-    		out.println("¾ÆÀÌµð°¡ Æ²·È½À´Ï´Ù.");
+    		out.println("ì•„ì´ë””ê°€ í‹€ë ¸ìŠµë‹ˆë‹¤.");
     	}
    }catch(Exception e) {
 	   e.printStackTrace();
