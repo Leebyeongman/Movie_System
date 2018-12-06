@@ -5,7 +5,8 @@
 	request.setCharacterEncoding("utf-8");
 %>
 <%
-	String theater_name = request.getParameter("theater_name");
+	String theater_name = request.getParameter("id");
+	out.print(theater_name);
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
@@ -25,8 +26,8 @@
 %>
 
 <script>
-	location.href = "theaterList.jsp";
 	alert("영화관 삭제가 완료되었습니다.");
+	location.href = "theaterList.jsp";
 </script>
 <%
 	} catch (Exception e) {
