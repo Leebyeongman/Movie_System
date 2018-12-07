@@ -27,6 +27,7 @@
 <head>
 <meta charset="EUC-KR">
 <title>Theater List</title>
+<link rel="stylesheet" href="../CSS/BasicForm.css">
 <!-- bootstrap -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -36,39 +37,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous">
-	
 </script>
-<style>
-.theater_list {
-	width: 80%;
-	margin: auto;
-}
-
-input {
-	border: 1px solid gray;
-	border-radius: 3px;
-	color: black;
-	font-family: inherit;
-	font-size: 14px;
-	height: 50px;
-	outline: none;
-	padding: 0px 10px;
-	width: 280px;
-	margin: 5px 0px;
-}
-
-.button {
-	border: 1px solid gray;
-	border-radius: 3px;
-	width: 140px;
-	height: 50px;
-	margin: 10px 4px;
-	font-family: inherit;
-	font-size: 14px;
-	outline: none;
-	padding: 0px 10px;
-}
-</style>
 </head>
 <body>
 	<nav class="navbar navbar-default" id="nav_bar">
@@ -123,13 +92,21 @@ input {
 
 		</div>
 	</nav>
-	<div class="theater_list">
+	<div class="basicform">
 		<h3>Theater List</h3>
 		<%
 			while (rs.next()) {
 					String theater_name = rs.getString("영화관_이름");
+					String address = rs.getString("주소");
+					String phone = rs.getString("전화번호");
+					int total = rs.getInt("총상영관");
 		%>
-		<a href="updateTheaterForm.jsp?theater_name=<%=theater_name%>"><%=theater_name%></a>
+		<div>
+			<a href="updateTheaterForm.jsp?theater_name=<%=theater_name%>"><%=theater_name%></a>
+			<%=address%>
+			<%=phone%>
+			<%=total%>
+		</div>
 		<br>
 		<%
 			}

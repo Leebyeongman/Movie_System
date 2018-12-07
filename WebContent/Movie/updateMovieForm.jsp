@@ -52,6 +52,7 @@
 <head>
 <meta charset="UTF-8">
 <title>영화 수정</title>
+<link rel="stylesheet" href="../CSS/BasicForm.css">
 <!-- bootstrap -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -63,37 +64,6 @@
 	crossorigin="anonymous">
 	
 </script>
-<style>
-.movie_edit {
-	width: 80%;
-	margin: auto;
-}
-
-input {
-	border: 1px solid gray;
-	border-radius: 3px;
-	color: black;
-	font-family: inherit;
-	font-size: 14px;
-	height: 50px;
-	outline: none;
-	padding: 0px 10px;
-	width: 280px;
-	margin: 5px 0px;
-}
-
-.button {
-	border: 1px solid gray;
-	border-radius: 3px;
-	width: 140px;
-	height: 50px;
-	margin: 10px 4px;
-	font-family: inherit;
-	font-size: 14px;
-	outline: none;
-	padding: 0px 10px;
-}
-</style>
 </head>
 <body>
 	<nav class="navbar navbar-default" id="nav_bar">
@@ -148,7 +118,7 @@ input {
 
 		</div>
 	</nav>
-	<div class="movie_edit">
+	<div class="basicform">
 		<form method="post" action="updateMoviePro.jsp?id=<%=number%>">
 			<h3>영화 수정 양식</h3>
 			<div class="register_form">

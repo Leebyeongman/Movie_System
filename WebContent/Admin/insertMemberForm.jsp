@@ -9,6 +9,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>회원가입</title>
+<link rel="stylesheet" href="../CSS/BasicForm.css">
 <!-- bootstrap -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -20,37 +21,6 @@
 	crossorigin="anonymous">
 	
 </script>
-<style>
-.userSignUp {
-	width: 80%;
-	margin: auto;
-}
-
-input {
-	border: 1px solid gray;
-	border-radius: 3px;
-	color: black;
-	font-family: inherit;
-	font-size: 14px;
-	height: 50px;
-	outline: none;
-	padding: 0px 10px;
-	width: 280px;
-	margin: 5px 0px;
-}
-
-.button {
-	border: 1px solid gray;
-	border-radius: 3px;
-	width: 140px;
-	height: 50px;
-	margin: 10px 4px;
-	font-family: inherit;
-	font-size: 14px;
-	outline: none;
-	padding: 0px 10px;
-}
-</style>
 </head>
 <body>
 	<nav class="navbar navbar-default" id="nav_bar">
@@ -104,7 +74,7 @@ input {
 
 	</div>
 	</nav>
-	<div class="userSignUp">
+	<div class="basicform">
 		<form action="insertMemberPro.jsp" method="post">
 			<div>
 				<h3>회원가입 양식</h3>
