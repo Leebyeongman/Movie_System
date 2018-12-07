@@ -28,6 +28,7 @@
 <meta charset="EUC-KR">
 <title>Theater List</title>
 <link rel="stylesheet" href="../CSS/BasicForm.css">
+<link rel="stylesheet" href="../CSS/theaterList.css">
 <!-- bootstrap -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -37,6 +38,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous">
+	
 </script>
 </head>
 <body>
@@ -64,7 +66,8 @@
 										if (cookies[i].getName().equals("id")) {
 											id = cookies[i].getValue();
 					%>
-					<li><a href="../Admin/mypageForm.jsp?id=<%=id%>">My Account</a></li>
+					<li><a href="../Admin/mypageForm.jsp?id=<%=id%>">My
+							Account</a></li>
 					<li><a href="../Admin/cookieLogout.jsp">Logout</a></li>
 					<%
 						}
@@ -93,24 +96,41 @@
 		</div>
 	</nav>
 	<div class="basicform">
+
 		<h3>Theater List</h3>
-		<%
-			while (rs.next()) {
-					String theater_name = rs.getString("영화관_이름");
-					String address = rs.getString("주소");
-					String phone = rs.getString("전화번호");
-					int total = rs.getInt("총상영관");
-		%>
-		<div>
-			<a href="updateTheaterForm.jsp?theater_name=<%=theater_name%>"><%=theater_name%></a>
-			<%=address%>
-			<%=phone%>
-			<%=total%>
-		</div>
-		<br>
-		<%
-			}
-		%>
+		<table>
+			<thead>
+				<tr>
+					<th class="th">영화관</th>
+					<th class="th">주소</th>
+					<th class="th">전화번호</th>
+					<th class="th">총 상영관</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<%
+					while (rs.next()) {
+							String theater_name = rs.getString("영화관_이름");
+							String address = rs.getString("주소");
+							String phone = rs.getString("전화번호");
+							int total = rs.getInt("총상영관");
+				%>
+				<tr>
+					<td>
+						<strong>
+							<a href="updateTheaterForm.jsp?theater_name=<%=theater_name%>"><%=theater_name%></a>
+						</strong>
+					</td>
+					<td><%=address%></td>
+					<td><%=phone%></td>
+					<td><%=total%></td>
+				</tr>
+				<%
+					}
+				%>
+			</tbody>
+		</table>
 	</div>
 </body>
 </html>
