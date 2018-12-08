@@ -7,7 +7,7 @@
 	String theater_address = request.getParameter("theater_address");
 	String theater_phone = request.getParameter("theater_phone");
 	int theater_auditorium = Integer.parseInt(request.getParameter("theater_auditorium"));
-	
+
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -35,7 +35,7 @@
 		pstmt.executeUpdate();
 		
 		request.getSession().setAttribute("theater_name", theater_name);
-		request.getSession().setAttribute("theater_audotorium", theater_auditorium);
+		request.getSession().setAttribute("theater_auditorium", Integer.toString(theater_auditorium));
 		response.sendRedirect("insertAuditoriumForm.jsp");
 
 	} catch (Exception e) {

@@ -19,6 +19,7 @@
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);
 
+		
 		String sql = "delete from 영화관 where 영화관_이름 = ?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, theater_name);
@@ -29,6 +30,7 @@
 	alert("영화관 삭제가 완료되었습니다.");
 	location.href = "theaterList.jsp";
 </script>
+
 <%
 	} catch (Exception e) {
 		e.printStackTrace();
