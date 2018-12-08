@@ -8,6 +8,13 @@
 
 <%
 	String id = (String) request.getSession().getAttribute("고객_아이디");
+	String passwd = "";
+	String name = "";
+	String address = "";
+	String birth = "";
+	String phone = "";
+	String point = "";
+	String vip = "";
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	PreparedStatement pstmt1 = null;
@@ -15,26 +22,33 @@
 	Statement stmt = null;
 	ResultSet rs = null;
 	ResultSet search = null;
-
+	
 	try {
 		String jdbcUrl = "jdbc:mysql://localhost:3306/moviedb";
 		String dbId = "root";
 		String dbPass = "dlqudaks12";
-
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);
-		stmt = conn.createStatement();
-		// rating
-		String sql = "select * from 영화";
+
+		String sql = "select * from 고객 where 고객_아이디=?";
 		pstmt = conn.prepareStatement(sql);
-		rs = stmt.executeQuery(sql);
+		pstmt.setString(1, id);
+		rs = pstmt.executeQuery();
+		rs.next();
+		passwd = rs.getString("비밀번호");
+		name = rs.getString("이름");
+		birth = rs.getString("생년월일");
+		address = rs.getString("주소");
+		phone = rs.getString("전화번호");
+		point = rs.getString("포인트");
+		vip = rs.getString("VIP");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta charset="UTF-8">
-<title>CNU MOVIE</title>
-<link rel="stylesheet" href="./CSS/main.css">
+<title>마이페이지</title>
+<link rel="stylesheet" href="../../CSS/BasicForm.css">
 <!-- bootstrap -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -92,41 +106,43 @@
 
 	</div>
 	</nav>
-	<h3>Movie Chart</h3>
+	<div class="basicform">
+		<form method="post" action="mypagePro.jsp?id=<%=id%>">
+			<h3>회원정보관리</h3>
+			<div>
+				<div class="register_form">
+					<input type="text" id="id" name="id" readonly value="<%=id%>">
+				</div>
+				<div class="register_form">
+					<input type="password" id="passwd" name="passwd"
+						value="<%=passwd%>">
+				</div>
+				<div class="register_form">
+					<input type="text" id="name" name="name" value="<%=name%>">
+				</div>
+				<div class="register_form">
+					<input type="text" id="birth" name="birth" value="<%=birth%>">
+				</div>
+				<div class="register_form">
+					<input type="text" id="address" name="address" value="<%=address%>">
+				</div>
+				<div class="register_form">
+					<input type="text" id="phone" name="phone" value="<%=phone%>">
+				</div>
+				<div class="register_form">
+					<input type="text" id="point" name="point" value="<%=point%>">
+				</div>
+				<div class="register_form">
+					<input type="text" id="vip" name="vip" value="<%=vip%>">
+				</div>
+				<button class="button" type="submit">수정완료</button>
+				<button class="button" type="button"
+					onclick="location.href='./deleteMemberForm.jsp'">탈퇴</button>
 
-	<div id="root">
-		<div class="App">
-			<%
-				while (rs.next()) {
-						String number = rs.getString("영화_아이디");
-						String title = rs.getString("제목");
-						String running = rs.getString("러닝타임");
-						String poster = rs.getString("포스터");
-						String rank = rs.getString("등급");
-						String info = rs.getString("주요정보");
-			%>
-			<div class="movie"
-				onclick="location.href='reserveMovieForm.jsp?id=<%=number%>'">
-				<div class="movie__Column">
-					<img src=<%=poster%>>
-				</div>
-				<div class="movie__Column">
-					<h1><%=title%></h1>
-					<div class="movie__Genres">
-						러닝 타임 :
-						<%=running%>
-						분 <br /> 등급 :
-						<%=rank%><br />
-					</div>
-					<p class="movie__Synopsis">
-						<%=info%>
-					</p>
-				</div>
+				<button class="button" type="button"
+					onclick="location.href='../../main.jsp'">메인 페이지</button>
 			</div>
-			<%
-				}
-			%>
-		</div>
+		</form>
 	</div>
 </body>
 
@@ -134,5 +150,5 @@
 <%
 	} catch (Exception e) {
 		e.printStackTrace();
-	} 
+	}
 %>

@@ -24,17 +24,21 @@
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);
 		stmt = conn.createStatement();
-		// rating
-		String sql = "select * from 영화";
-		pstmt = conn.prepareStatement(sql);
-		rs = stmt.executeQuery(sql);
+		
+		String searchid = "select 고객_아이디 from 고객 where 고객_아이디='" + id + "'";
+		pstmtsearch = conn.prepareStatement(searchid);
+		search = pstmtsearch.executeQuery();
+		ArrayList<String> idlist = new ArrayList<String>();
+		while (search.next()) {
+			idlist.add(search.getString("고객_아이디"));
+		}
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="UTF-8">
-<title>CNU MOVIE</title>
-<link rel="stylesheet" href="./CSS/main.css">
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>회원정보 삭제</title>
+<link rel="stylesheet" href="../../CSS/BasicForm.css">
 <!-- bootstrap -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -62,77 +66,53 @@
 				<li><a href="./Theater/theaterList.jsp">Theater</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-			<% 
-				try {
-					String searchid = "select 고객_아이디 from 고객 where 고객_아이디='" + id + "'";
-					pstmtsearch = conn.prepareStatement(searchid);
-					search = pstmtsearch.executeQuery();
-					ArrayList<String> idlist = new ArrayList<String>();
-					while (search.next()) {
-						idlist.add(search.getString("고객_아이디"));
-					}
+				<%
 					if (idlist.contains(id)) {
-			%>
-				<li><a href="./User/Info/mypageForm.jsp?id=<%=id%>">My Account</a></li>
+				%>
+				<li><a href="./User/Info/mypageForm.jsp?id=<%=id%>">My
+						Account</a></li>
 				<li><a href="./User/Info/userlogout.jsp">Logout</a></li>
-			<%			
-					}
-					else {
-			%>
+				<%
+					} else {
+				%>
 				<li><a href="./User/Info/insertMemberForm.jsp">Sign Up</a></li>
 				<li><a href="./User/Info/login.jsp">Login</a></li>
-			<%
+				<%
 					}
-				}catch (Exception e) {
-					e.printStackTrace();
-				}
-			%>
+				%>
 			</ul>
 		</div>
 
 	</div>
 	</nav>
-	<h3>Movie Chart</h3>
 
-	<div id="root">
-		<div class="App">
-			<%
-				while (rs.next()) {
-						String number = rs.getString("영화_아이디");
-						String title = rs.getString("제목");
-						String running = rs.getString("러닝타임");
-						String poster = rs.getString("포스터");
-						String rank = rs.getString("등급");
-						String info = rs.getString("주요정보");
-			%>
-			<div class="movie"
-				onclick="location.href='reserveMovieForm.jsp?id=<%=number%>'">
-				<div class="movie__Column">
-					<img src=<%=poster%>>
+	<div class="basicform">
+		<form method="post" action="./deleteMemberPro.jsp">
+			<div>
+				<h3>회원정보 삭제</h3>
+				<div class="register_form">
+					<input type="text" id="id" name="id" required value="ID" value=""
+						onBlur="if(this.value=='')this.value='ID'"
+						onFocus="if(this.value=='ID')this.value='' ">
 				</div>
-				<div class="movie__Column">
-					<h1><%=title%></h1>
-					<div class="movie__Genres">
-						러닝 타임 :
-						<%=running%>
-						분 <br /> 등급 :
-						<%=rank%><br />
-					</div>
-					<p class="movie__Synopsis">
-						<%=info%>
-					</p>
+
+				<div class="register_form">
+					<input type="password" id="passwd" name="passwd" required
+						value="default" value=""
+						onBlur="if(this.value=='')this.value='default'"
+						onFocus="if(this.value=='default')this.value='' ">
 				</div>
 			</div>
-			<%
-				}
-			%>
-		</div>
+			<div>
+				<button class="button" type="submit">삭제</button>
+				<button class="button" type="submit">초기화</button>
+			</div>
+		</form>
 	</div>
 </body>
-
 </html>
 <%
 	} catch (Exception e) {
 		e.printStackTrace();
-	} 
+	}
 %>
