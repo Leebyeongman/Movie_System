@@ -3,10 +3,10 @@
 <%@ page import="java.sql.*" %>
 <% request.setCharacterEncoding("utf-8");
 
-	String name = request.getParameter("t_name");
-	String address = request.getParameter("t_address");
-	String phone = request.getParameter("t_number");
-	int auditorium = Integer.parseInt(request.getParameter("t_total"));
+	String theater_name = request.getParameter("theater_name");
+	String theater_address = request.getParameter("theater_address");
+	String theater_phone = request.getParameter("theater_phone");
+	int theater_auditorium = Integer.parseInt(request.getParameter("theater_auditorium"));
 	
 %>
 
@@ -28,11 +28,15 @@
 		conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);
 
 		pstmt = conn.prepareStatement("insert into 영화관 values (?, ?, ?, ?)");
-		pstmt.setString(1, name);
-		pstmt.setString(2, address);
-		pstmt.setString(3, phone);
-		pstmt.setInt(4, auditorium);
+		pstmt.setString(1, theater_name);
+		pstmt.setString(2, theater_address);
+		pstmt.setString(3, theater_phone);
+		pstmt.setInt(4, theater_auditorium);
 		pstmt.executeUpdate();
+		
+		request.getSession().setAttribute("theater_name", theater_name);
+		request.getSession().setAttribute("theater_audotorium", theater_auditorium);
+		response.sendRedirect("insertAuditoriumForm.jsp");
 
 	} catch (Exception e) {
 		e.printStackTrace();

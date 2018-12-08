@@ -7,9 +7,9 @@
 
 <%
 	String theater_name = request.getParameter("theater_name");
-	String address = "";
-	String phone = "";
-	int total_num = 0;
+	String theater_address = "";
+	String theater_phone = "";
+	int theater_auditorium = 0;
 
 	Connection conn = null;
 	PreparedStatement pstmt = null;
@@ -35,9 +35,9 @@
 		rs.next();
 
 		theater_name = rs.getString("영화관_이름");
-		address = rs.getString("주소");
-		phone = rs.getString("전화번호");
-		total_num = rs.getInt("총상영관");
+		theater_address = rs.getString("주소");
+		theater_phone = rs.getString("전화번호");
+		theater_auditorium = rs.getInt("총상영관");
 %>
 <!DOCTYPE html>
 <html>
@@ -119,15 +119,15 @@
 				<input type="text" name="theater_name" value="<%=theater_name%>">
 			</div>
 			<div class="register_form">
-				<input type="text" name="address" value="<%=address%>">
+				<input type="text" name="theater_address" value="<%=theater_address%>">
 			</div>
 
 			<div class="register_form">
-				<input type="text" name="phone" value="<%=phone%>">
+				<input type="text" name="theater_phone" value="<%=theater_phone%>">
 			</div>
 
 			<div class="register_form">
-				<input type="text" name="total_num" value="<%=total_num%>">
+				<input type="text" name="theater_auditorium" value="<%=theater_auditorium%>">
 			</div>
 
 			<div>

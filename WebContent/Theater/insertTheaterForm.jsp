@@ -79,25 +79,25 @@
 		<form method="post" action="insertTheaterPro.jsp">
 			<h3>영화관 등록</h3>
 			<div class="register_form">
-				<input type="text" name="t_name" value="영화관 (ex.CGV 대전)" required
+				<input type="text" name="theater_name" value="영화관 (ex.CGV 대전)" required
 					onBlur="if(this.value=='')this.value='영화관 (ex.CGV 대전)'"
 					onFocus="if(this.value=='영화관 (ex.CGV 대전)')this.value='' ">
 			</div>
 
 			<div class="register_form">
-				<input type="text" name="t_address" value="주소 (ex.대전광역시 중구 계백로 1700)" required
+				<input type="text" name="theater_address" value="주소 (ex.대전광역시 중구 계백로 1700)" required
 					onBlur="if(this.value=='')this.value='주소 (ex.대전광역시 중구 계백로 1700)'"
 					onFocus="if(this.value=='주소 (ex.대전광역시 중구 계백로 1700)')this.value='' ">
 			</div>
 
 			<div class="register_form">
-				<input type="text" name="t_number" value="전화번호 (ex.1522-1234)" required
+				<input type="text" name="theater_phone" value="전화번호 (ex.1522-1234)" required
 					onBlur="if(this.value=='')this.value='전화번호 (ex.1522-1234)'"
 					onFocus="if(this.value=='전화번호 (ex.1522-1234)')this.value='' ">
 			</div>
 			
 			<div class="register_form">
-				<input type="text" name="t_total" value="총 상영관 (최대 5개)" required
+				<input type="text" name="theater_auditorium" value="총 상영관 (최대 5개)" required
 					onBlur="if(this.value=='')this.value='총 상영관 (최대 5개)'"
 					onFocus="if(this.value=='총 상영관 (최대 5개)')this.value='' ">
 			</div>

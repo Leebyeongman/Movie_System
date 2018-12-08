@@ -112,9 +112,9 @@
 				<%
 					while (rs.next()) {
 							String theater_name = rs.getString("영화관_이름");
-							String address = rs.getString("주소");
-							String phone = rs.getString("전화번호");
-							int total = rs.getInt("총상영관");
+							String theater_address = rs.getString("주소");
+							String theater_phone = rs.getString("전화번호");
+							int theater_auditorium = rs.getInt("총상영관");
 				%>
 				<tr>
 					<td>
@@ -122,9 +122,9 @@
 							<a href="updateTheaterForm.jsp?theater_name=<%=theater_name%>"><%=theater_name%></a>
 						</strong>
 					</td>
-					<td><%=address%></td>
-					<td><%=phone%></td>
-					<td><%=total%></td>
+					<td><%=theater_address%></td>
+					<td><%=theater_phone%></td>
+					<td><%=theater_auditorium%></td>
 				</tr>
 				<%
 					}
